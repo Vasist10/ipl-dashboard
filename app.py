@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Load and clean data
 @st.cache_data
 def load_data():
     matches = pd.read_csv("data/matches.csv")
@@ -19,7 +18,6 @@ def load_data():
 
     return matches, deliveries
 
-# Helper Functions
 def calculate_toss_win_percentage(matches):
     teams = set(matches['team1']).union(set(matches['team2']))
     team_toss_win_perc = {}
@@ -112,13 +110,11 @@ def calculate_head_to_head(matches, team1, team2):
             team2score += 1
     return team1score, team2score
 
-# Main App
 st.set_page_config(page_title="IPL Analysis Dashboard", layout="wide")
 st.title("🏏 IPL Analysis Dashboard")
 
 matches, deliveries = load_data()
 
-# Sidebar navigation
 options = [
     "Toss Win %",
     "Win %",
